@@ -1,21 +1,22 @@
 {% set name = "cpuid-native" %}
-{% set version = "0.0.8" %}
+{% set version = "0.0.9" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cpuid_native-{{ version }}.tar.gz
-  sha256: b70c3d2f71d69fe648084eababb4db85db4dedcd46a182933d81464d94f3a892
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cpuid_native-{{ version }}.tar.gz
+  sha256: 84e568520515a49bddc6a2afc495649bfbad017db52b895740d3f743bcb3a3b0
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - pip
